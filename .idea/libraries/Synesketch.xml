@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Synesketch">
+    <CLASSES>
+      <root url="file://$USER_HOME$/Downloads/Synesketch" />
+      <root url="file://$USER_HOME$/Downloads/Synesketch/bin" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="file://$USER_HOME$/Downloads/Synesketch/doc" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="file://$USER_HOME$/Downloads/Synesketch/src" />
+      <root url="file://$USER_HOME$/Downloads/Synesketch/test" />
+    </SOURCES>
+  </library>
+</component>
