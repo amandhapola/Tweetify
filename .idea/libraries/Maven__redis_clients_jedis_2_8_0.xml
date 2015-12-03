@@ -14,8 +14,14 @@
       <root url="jar://$MAVEN_REPOSITORY$/redis/clients/Jedis/2.8.0/Jedis-2.8.0-javadoc.jar!/" />
       <root url="jar://$MAVEN_REPOSITORY$/redis/clients/Jedis/2.8.0/Jedis-2.8.0-javadoc.jar!/" />
       <root url="jar://$MAVEN_REPOSITORY$/redis/clients/Jedis/2.8.0/Jedis-2.8.0-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/redis/clients/Jedis/2.8.0/Jedis-2.8.0-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/redis/clients/Jedis/2.8.0/Jedis-2.8.0-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/redis/clients/Jedis/2.8.0/Jedis-2.8.0-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/redis/clients/Jedis/2.8.0/Jedis-2.8.0-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/redis/clients/Jedis/2.8.0/Jedis-2.8.0-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/redis/clients/Jedis/2.8.0/Jedis-2.8.0-sources.jar!/" />
       <root url="jar://$MAVEN_REPOSITORY$/redis/clients/Jedis/2.8.0/Jedis-2.8.0-sources.jar!/" />
       <root url="jar://$MAVEN_REPOSITORY$/redis/clients/Jedis/2.8.0/Jedis-2.8.0-sources.jar!/" />
       <root url="jar://$MAVEN_REPOSITORY$/redis/clients/Jedis/2.8.0/Jedis-2.8.0-sources.jar!/" />
