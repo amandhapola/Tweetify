@@ -10,8 +10,8 @@ import tweepy
 import webbrowser
 import json
 import redis
-consumer_key = "dKUQo0IIf1ZYo3EtMNdbPT374"
-consumer_secret = "lnRA8izXCEG6mRMePUV88k6XL3SzUs5fe3iOtKbArMFlaw3jio"
+consumer_key = ""
+consumer_secret = ""
 REQUEST_TOKEN_URL = "https://api.twitter.com/oauth/request_token"
 AUTHORIZE_URL = "https://api.twitter.com/oauth/authorize?oauth_token="
 ACCESS_TOKEN_URL = "https://api.twitter.com/oauth/access_token"
