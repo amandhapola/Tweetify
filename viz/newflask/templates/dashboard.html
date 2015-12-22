@@ -2,39 +2,69 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
         <title>Dashboard</title>
         <meta name="generator" content="Bootply" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta name="description" content="Bootstrap 3 Example dashboard / admin / control panel layout using Bootstrap 3." />
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
-        
+
         <!--[if lt IE 9]>
           <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
         <link rel="apple-touch-icon" href="/bootstrap/img/apple-touch-icon.png">
         <link rel="apple-touch-icon" sizes="72x72" href="/bootstrap/img/apple-touch-icon-72x72.png">
         <link rel="apple-touch-icon" sizes="114x114" href="/bootstrap/img/apple-touch-icon-114x114.png">
-        
+
         <!-- CSS code from Bootply.com editor -->
-        
+
         <style type="text/css">
-            .navbar-static-top {
-              margin-bottom:20px;
-            }
+
             body {
-             background-color:rgb(0,0,50);
+             /*background-color:rgba(85,172,238,0.2);*/
+             background-color:rgba(0,0,50,0.9);
             }
+            .navbar{
+              width: 100%;
+            }
+            .panel{
+             border: 3px outset #1e0f94;
+             -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+             -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+             box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+            }
+            #top-nav{
+              background-color: rgba(0,0,0,0.6);
+            }
+            #top-row{
+              margin-top:2%;
+              margin-bottom:4%;
+              margin-right: 1%;
+              margin-left: 1%;
+            }
+
+            footer{
+              background-color: rgba(0,0,0,0.6);
+              width: 100%;
+              height: 50px;
+            }
+
+            #us{
+              color:rgb(255,215,0);
+              font-size: 20px;
+            }
+
         </style>
     </head>
-    
+
     <!-- HTML code from Bootply.com editor -->
-    
+
     <body  >
-        
+
         <!-- Header -->
-<div id="top-nav" class="navbar navbar-inverse navbar-static-top">
+<div class="container-fluid">
+<div id="top-nav" class="navbar">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
       <span class="icon-toggle"></span>
@@ -43,7 +73,7 @@
   </div>
   <div class="navbar-collapse collapse">
     <ul class="nav navbar-nav pull-right">
-      
+
       <li class="dropdown">
         <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
           <strong>{{g.userName}}</strong> <span class="caret"></span></a>
@@ -56,104 +86,127 @@
     </ul>
   </div>
 </div>
+</div>
 <!-- /Header -->
 
 <!-- Main -->
 <div class="container-fluid">
-<div class="row">
+<div id="top-row" class="row" style="padding-top:15px;padding-bottom:15px;
+                        padding-right:25px;padding-left:30px;">
   <div class="col-lg-13 row">
 
-    <div class="col-lg-3">
-      <div class="panel panel-default">
+    <div class="col-md-3">
+      <div class="panel panel-info">
         <div class="panel-heading">
           <center><strong>ANGER</strong></center>
         </div>
-        <div  id="gc_anger" class="panel-body epoch gauge-small">                 
+        <center>
+        <div  id="gc_anger" class="panel-body epoch gauge-small">
         </div>
+        </center>
      </div>
     </div>
-    <div class="col-lg-3">
-      <div class="panel panel-default">
+    <div class="col-md-3">
+      <div class="panel panel-info"  >
         <div class="panel-heading">
           <center><strong>DISGUST</strong></center>
         </div>
-        <div  id="gc_disgust"class="panel-body epoch gauge-small">                 
+        <center>
+        <div  id="gc_disgust"class="panel-body epoch gauge-small">
         </div>
+        </center>
      </div>
     </div>
-    <div class="col-lg-3">
-      <div class="panel panel-default">
+    <div class="col-md-3">
+      <div class="panel panel-info">
         <div class="panel-heading">
           <center><strong>FEAR</strong></center>
         </div>
-        <div  id="gc_fear" class="panel-body epoch gauge-small">                 
+        <center>
+        <div  id="gc_fear" class="panel-body epoch gauge-small">
         </div>
+        </center>
      </div>
     </div>
 
-    <div class="col-lg-3">
-      <div class="panel panel-default">
+    <div class="col-md-3">
+      <div class="panel panel-info">
         <div class="panel-heading">
           <center><strong>HAPPY</strong></center>
         </div>
-        <div id="gc_happy"class="panel-body epoch gauge-small">                 
+        <center>
+        <div id="gc_happy"class="panel-body epoch gauge-small">
         </div>
+        </center>
      </div>
     </div>
     <div class="row">
     <div class="col-md-4">
-      <div class="panel panel-default">
+      <div class="panel panel-info">
         <div class="panel-heading">
           <center><strong>NEUTRAL</strong></center>
         </div>
-        <div id="gc_neutral"class="panel-body epoch gauge-small">                 
+        <center>
+        <div id="gc_neutral"class="panel-body epoch gauge-small">
         </div>
+        </center>
      </div>
     </div>
     <div class="col-md-4">
-      <div class="panel panel-default">
+      <div class="panel panel-info">
         <div class="panel-heading">
           <center><strong>SAD</strong></center>
         </div>
-        <div id="gc_sad" class="panel-body epoch gauge-small">                 
+        <center>
+        <div id="gc_sad" class="panel-body epoch gauge-small">
         </div>
+        </center>
      </div>
     </div>
     <div class="col-md-4">
-      <div class="panel panel-default">
+      <div class="panel panel-info">
         <div class="panel-heading">
           <center><strong>SURPRISE</strong></center>
         </div>
-        <div id="gc_surprise"class="panel-body epoch gauge-small">                 
+        <center>
+        <div id="gc_surprise"class="panel-body epoch gauge-small">
         </div>
+        </center>
      </div>
     </div>
     </div>
-    
+
   </div>
   </div>
-  <div class="row" style="margin:10px;">
+  <div   class="row" style="margin:10px;">
   <div class="col-md-12">
-    <div class="panel panel-default">
-        <div class="panel-heading">
+    <div class="panel panel-info ">
+        <div class="panel-heading ">
           <center><strong>WORLD MAP</strong></center>
         </div>
         <center>
-        <div class="panel-body" id="map" style="height: 750px;width:95%">                 
+        <div class="panel-body" id="map" style="height: 750px;width:100%;background-color:rgba(0,0,50,0.9);">
         </div>
         </center>
     </div>
   </div>
-    
+
 </div>
 </div>
+<footer class="footer" >
+      <div class="container-fluid"  id="us" >
+      <div class="row" >
+        <span >Made by <a href="http://www.twitter.com/amandhapola">@amandhapola</a> and <a href="http://www.twitter.com/i_kritesh">@i_kritesh</a></span>
+        </div>
+      </div>
+</footer>
 <!-- /Main -->
 
 
-  
-<script src="https://maps.googleapis.com/maps/api/js"></script>        
+
+<script src="https://maps.googleapis.com/maps/api/js"></script>
 <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script type='text/javascript' src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script src="https://cdn.jsdelivr.net/epoch/0.8.4/epoch.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/epoch/0.8.4/epoch.min.css">
@@ -168,6 +221,7 @@ var tweet_source = new EventSource('/tweets');
         mapTypeId: google.maps.MapTypeId.TERRAIN
       }
       map = new google.maps.Map(mapCanvas, mapOptions);
+      map.set('styles',[{"featureType":"all","elementType":"labels.text.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"color":"#000000"},{"lightness":13}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#000000"}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#144b53"},{"lightness":14},{"weight":1.4}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#08304b"}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#0c4152"},{"lightness":5}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#000000"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#0b434f"},{"lightness":25}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#000000"}]},{"featureType":"road.arterial","elementType":"geometry.stroke","stylers":[{"color":"#0b3d51"},{"lightness":16}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#000000"}]},{"featureType":"transit","elementType":"all","stylers":[{"color":"#146474"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#021019"}]}]);
   }
   function addPoint(x, y, text, sentiment){
     var myLatLng = {lat: x, lng: y};
@@ -177,6 +231,11 @@ var tweet_source = new EventSource('/tweets');
       title: sentiment+":"+text
       });
   }
+  ////////////////////////////////////////////////////////////////
+  //styling maps/////////////////////////////////////////////////
+
+  ///////////////////////////////////////////////////////////////
+
   google.maps.event.addDomListener(window, 'load', initialize);
   tweet_source.onmessage = function(event){
     console.log(event.data);
@@ -185,7 +244,7 @@ var tweet_source = new EventSource('/tweets');
     if(pos!=1)
     addPoint(parseInt(pos["lat"]), parseInt(pos["lon"]),pos["text"],pos["sentiment"])
   }
-  
+
   var source = new EventSource('/stream');
   var count = {"anger":0,
               "disgust":0,
@@ -212,7 +271,7 @@ var tweet_source = new EventSource('/tweets');
   }
   function update(t,totaltweets){
     console.log('update:'+t);
-    
+
     var anger = {time:t, y: count["anger"]/totaltweets};
     var disgust = {time:t, y:count["disgust"]/totaltweets};
     var fear = {time:t, y:count["fear"]/totaltweets};
@@ -222,7 +281,7 @@ var tweet_source = new EventSource('/tweets');
     var surprise = {time:t, y:count["surprise"]/totaltweets};
 
     var x = [anger, disgust, fear, happy, neutral, sad, surprise];
-    console.log(JSON.stringify(x)); 
+    console.log(JSON.stringify(x));
     chart.push(x);
   }
   source.onmessage = function(event){
@@ -233,9 +292,9 @@ var tweet_source = new EventSource('/tweets');
         v[emotion].push(val/totaltweets);//for gauges
   }
 </script>
-        
-       
-        
-        
+
+
+
+
     </body>
 </html>
