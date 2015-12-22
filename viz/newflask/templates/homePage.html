@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/static/css/animate.css">
+    <style type="text/css">
+    #video{
+      position: absolute;
+      background-size: cover;
+      overflow: hidden;
+      top: 0;
+      left: 0; 
+      opacity: 0.7;
+      min-width: 100%; 
+      min-height: 100%;
+       z-index: -1;
+    }
+    #heading{
+      /*background-color: yellow;*/
+      position: absolute;
+      top: 40%;
+      text-align: center;
+      /*margin-top: 10%;*/
+    }
+    #tweet:hover{
+      color: black;
+    }
+    #navigation{
+      background-color: rgba(81 ,81 , 81,0.9);
+    }
+    #navigation:hover{
+      background-color: rgba(0,0,0,0.6);
+    }
+    #logo{
+      height: 40px;
+      width: 50px;
+    }
+    #logo-span{
+      float: left;
+    }
+    #logo-heading{
+      font-weight: bolder;
+      color: rgb(85,172,238);
+    }
+    #top{
+      
+    }
+    .divider{
+      height: 8px;
+      
+      background-color:rgba(0,0,0,0.3);
+    }
+    #middle{
+    background-color: rgba(0,0,0,0.8);
+
+    }
+    .little{
+      border-color: rgba(0,0,0,0.3);
+      text-align: center;
+      height: 500px;
+    }
+    .little span{
+      /*color:  #2F4F4F;*/
+      color: white;
+      font-weight: bolder;
+      font-family: 'serif';
+      font-size: 60px;
+    }
+    .hidden{
+     opacity:0;
+}
+.visible{
+     opacity:1;
+}
+#leftcol span:hover{
+  color: rgb(85,172,238);
+}
+#rightcol span:hover{
+  color: rgb(85,172,238);
+}
+    </style>
+  </head>
+
+  <body>
+   
+      
+    <div class="container-fluid" style="position:relative;overflow:hidden;">
+    <video id="video" class="video-background" autoplay loop muted no-controls src="/static/img/twitter.mp4"></video>
+    
+    <nav id="navigation" class="navbar navbar-fixed-top navbar-dark bg-inverse">
+    <div class="container">
+      <span id="logo-span"><img src="/static/img/twitter.png" id="logo"></span>
+      <a class="navbar-brand" href="#" id="logo-heading">Tweetify</a>
+    </div>
+                  
+    </nav>
+    
+      <div class="row" id ="top">
+           <div class="col-md-12" id="heading">
+             <h1 class="display-1" id="tweet">Tweetify</h1>
+             <a href="{{url_for('login')}}"><img src="https://g.twimg.com/dev/sites/default/files/images_documentation/sign-in-with-twitter-gray.png" class="animated infinite jello"></a>
+           </div>
+     </div>
+    </div>
+
+    <div class="container-fluid ">
+    <div class="row divider">
+    </div>
+    </div>
+    <!-- middle -->
+    <div class="container-fluid">
+      <div class="row" id="middle" style="border:8px solid;border-color:rgba(0,0,0,0.3);">
+        <div id="leftcol" class="col-md-6 little post" style="border-right:10px solid;border-color:rgba(0,0,0,0.3);">
+        <span>Real Time Tweet Analysis</span>
+          <div class="row">
+          <div class="col-md-6">
+            <img src="/static/img/analytics.png" style="height:60%;width:60%;margin-top:30%;">  
+          </div>
+          <div class="col-md-6" >
+            <img src="/static/img/analytics2.png" style="height:60%;width:60%;margin-top:30%;">
+          </div>
+          </div>
+        </div>
+        <div id="rightcol" class="col-md-6 little post" >
+        <span>Uses Apache storm</span>
+          <img src="/static/img/storm.png" style="height:40%;width:70%;margin-top:15%;">
+        </div>
+      </div>
+    </div>
+    <!--  -->
+    <div class="container-fluid ">
+    <div class="row divider">
+    </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
+
+      <script type="text/javascript" src="/static/js/css3-animate-it.js"></script>
+      <script type="text/javascript" src="/static/js/bower_components/jQuery-viewport-checker/dist/jquery.viewportchecker.min.js"></script>
+
+    <script type="text/javascript">
+    window_size = $(window).height();
+    $("#top").css({"min-height":window_size+"px"});
+    
+    jQuery(document).ready(function() {
+    jQuery('.post').addClass("hidden").viewportChecker({
+        classToAdd: 'visible animated fadeInRightBig',
+        offset: 100
+       });
+});
+
+    $("#logo").hover(function () {
+    $(this).toggleClass("animated pulse");
+ });
+    $("#logo-heading").hover(function () {
+    $(this).toggleClass("animated pulse");
+ });
+    </script>
+  </body>
+</html>

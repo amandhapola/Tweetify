@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+        <meta charset="utf-8">
+        <title>Dashboard</title>
+        <meta name="generator" content="Bootply" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="description" content="Bootstrap 3 Example dashboard / admin / control panel layout using Bootstrap 3." />
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+        
+        <!--[if lt IE 9]>
+          <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <link rel="apple-touch-icon" href="/bootstrap/img/apple-touch-icon.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/bootstrap/img/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/bootstrap/img/apple-touch-icon-114x114.png">
+        
+        <!-- CSS code from Bootply.com editor -->
+        
+        <style type="text/css">
+            .navbar-static-top {
+              margin-bottom:20px;
+            }
+            body {
+             background-color:rgb(0,0,50);
+            }
+        </style>
+    </head>
+    
+    <!-- HTML code from Bootply.com editor -->
+    
+    <body  >
+        
+        <!-- Header -->
+<div id="top-nav" class="navbar navbar-inverse navbar-static-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="icon-toggle"></span>
+    </button>
+    <a class="navbar-brand" href="#">Tweetify</a>
+  </div>
+  <div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav pull-right">
+      
+      <li class="dropdown">
+        <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
+          <strong>{{g.userName}}</strong> <span class="caret"></span></a>
+        <ul id="g-account-menu" class="dropdown-menu" role="menu">
+          <li><a href="#">My Profile</a></li>
+        </ul>
+      </li>
+      <li><img src="{{g.profileImage}}" style="border-radius:10%;"></li>
+      <li><a href="#">Log out</a></li>
+    </ul>
+  </div>
+</div>
+<!-- /Header -->
+
+<!-- Main -->
+<div class="container-fluid">
+<div class="row">
+  <div class="col-lg-13 row">
+
+    <div class="col-lg-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <center><strong>ANGER</strong></center>
+        </div>
+        <div  id="gc_anger" class="panel-body epoch gauge-small">                 
+        </div>
+     </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <center><strong>DISGUST</strong></center>
+        </div>
+        <div  id="gc_disgust"class="panel-body epoch gauge-small">                 
+        </div>
+     </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <center><strong>FEAR</strong></center>
+        </div>
+        <div  id="gc_fear" class="panel-body epoch gauge-small">                 
+        </div>
+     </div>
+    </div>
+
+    <div class="col-lg-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <center><strong>HAPPY</strong></center>
+        </div>
+        <div id="gc_happy"class="panel-body epoch gauge-small">                 
+        </div>
+     </div>
+    </div>
+    <div class="row">
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <center><strong>NEUTRAL</strong></center>
+        </div>
+        <div id="gc_neutral"class="panel-body epoch gauge-small">                 
+        </div>
+     </div>
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <center><strong>SAD</strong></center>
+        </div>
+        <div id="gc_sad" class="panel-body epoch gauge-small">                 
+        </div>
+     </div>
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <center><strong>SURPRISE</strong></center>
+        </div>
+        <div id="gc_surprise"class="panel-body epoch gauge-small">                 
+        </div>
+     </div>
+    </div>
+    </div>
+    
+  </div>
+  </div>
+  <div class="row" style="margin:10px;">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+          <center><strong>WORLD MAP</strong></center>
+        </div>
+        <center>
+        <div class="panel-body" id="map" style="height: 750px;width:95%">                 
+        </div>
+        </center>
+    </div>
+  </div>
+    
+</div>
+</div>
+<!-- /Main -->
+
+
+  
+<script src="https://maps.googleapis.com/maps/api/js"></script>        
+<script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type='text/javascript' src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="https://cdn.jsdelivr.net/epoch/0.8.4/epoch.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/epoch/0.8.4/epoch.min.css">
+<script type='text/javascript'>
+var tweet_source = new EventSource('/tweets');
+  var map;
+  function initialize(){
+    var mapCanvas = document.getElementById('map');
+      var mapOptions = {
+        center: new google.maps.LatLng(44.5403, -78.5463),
+        zoom: 2,
+        mapTypeId: google.maps.MapTypeId.TERRAIN
+      }
+      map = new google.maps.Map(mapCanvas, mapOptions);
+  }
+  function addPoint(x, y, text, sentiment){
+    var myLatLng = {lat: x, lng: y};
+    var marker = new google.maps.Marker({
+      position: myLatLng,
+      map: map,
+      title: sentiment+":"+text
+      });
+  }
+  google.maps.event.addDomListener(window, 'load', initialize);
+  tweet_source.onmessage = function(event){
+    console.log(event.data);
+    var pos = JSON.parse(event.data);
+    console.log(pos["text"]);
+    if(pos!=1)
+    addPoint(parseInt(pos["lat"]), parseInt(pos["lon"]),pos["text"],pos["sentiment"])
+  }
+  
+  var source = new EventSource('/stream');
+  var count = {"anger":0,
+              "disgust":0,
+              "fear":0,
+              "happy":0,
+              "neutral":0,
+              "sad":0,
+              "surprise":0};
+
+
+  var anger = {label: 'anger', values: []};
+  var disgust = {label: 'disgust', values: []};
+  var fear = {label:'fear', values:[]};
+  var happy = {label:'happy', values:[]};
+  var neutral = {label:'neutral', values:[]};
+  var sad = {label:'sad', values:[]};
+  var surprise = {label:'surprise', values:[]};
+  var v = {};
+  for(var key in count){
+      v[key] = $('#gc_'+key).epoch({
+      type: 'time.gauge',
+      value: 0
+    });
+  }
+  function update(t,totaltweets){
+    console.log('update:'+t);
+    
+    var anger = {time:t, y: count["anger"]/totaltweets};
+    var disgust = {time:t, y:count["disgust"]/totaltweets};
+    var fear = {time:t, y:count["fear"]/totaltweets};
+    var happy = {time:t, y:count["happy"]/totaltweets};
+    var neutral = {time:t, y:count["neutral"]/totaltweets};
+    var sad = {time:t, y:count["sad"]/totaltweets};
+    var surprise = {time:t, y:count["surprise"]/totaltweets};
+
+    var x = [anger, disgust, fear, happy, neutral, sad, surprise];
+    console.log(JSON.stringify(x)); 
+    chart.push(x);
+  }
+  source.onmessage = function(event){
+    var emotion = event.data.split(':')[0];
+    var val = event.data.split(':')[1];
+    var totaltweets = event.data.split(':')[2];
+    if(emotion in v)
+        v[emotion].push(val/totaltweets);//for gauges
+  }
+</script>
+        
+       
+        
+        
+    </body>
+</html>

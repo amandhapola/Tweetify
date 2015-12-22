@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='js/nvd3/build/nv.d3.min.css') }}">
+
+</head>
+<body>
+<div id="testBlock">
+<svg id="test1"></svg>
+</div>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/nvd3/build/nv.d3.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/nvd3/examples/lib/stream_layers.js') }}"></script>
+
+<script type="text/javascript">
+var source = new EventSource('/stream');
+var count = {"anger":0,
+			"disgust":0,
+			"fear":0,
+			"happy":0,
+			"neutral":0,
+			"sad":0,
+			"surprise":0};
+var arr=[];
+arr.push(count);
+var hashEmotion={};
+var totalTweets=0;
+
+var mapping = {"anger":0,
+"disgust":1,
+"fear":2,
+"happy":3,
+"neutral":4,
+"sad":5,
+"surprise":6};
+
+var testdata = [
+        {key: "anger", y: 0},
+        {key: "disgust", y: 0},
+        {key: "fear", y: 0},
+        {key: "happy", y: 0},
+        {key: "neutral", y: 0},
+        {key: "sad", y: 0},
+        {key: "surprise", y: 0}
+    ];
+var print = function(){
+	console.log(JSON.stringify(testdata));
+}
+var show = function(){
+	var width = 900;
+    var height = 900;
+
+    nv.addGraph(function() {
+        var chart = nv.models.pie()
+                .x(function(d) { return d.key; })
+                .y(function(d) { return d.y; })
+                .width(width)
+                .height(height)
+                .labelType(function(d, i, values) {
+                    return values.key + ':' + values.value;
+                })
+                ;
+
+        d3.select("#test1")
+                .datum([testdata])
+                .transition().duration(1200)
+                .attr('width', width)
+                .attr('height', height)
+                .call(chart);
+
+        // LISTEN TO CLICK EVENTS ON THE PIE CONTAINER
+        // chart.dispatch.on('chartClick', function() {
+        //   code...
+        // });
+
+        // LISTEN TO CLICK EVENTS ON THE SLICES OF THE PIE
+        // chart.dispatch.on('elementClick', function() {
+        //   code...
+        // });
+
+        // OTHER EVENTS DISPATCHED BY THE PIE INCLUDE: elementDblClick, elementMouseover, elementMouseout, elementMousemove, renderEnd
+        // @see nv.models.pie
+        return chart;
+    });
+}
+source.onmessage=function(event){
+	// console.log(event);
+	var emotion=event.data.split(':')[0];
+	//hashEmotion[emotion] = event.data.split(':')[1];
+	//arr[0][emotion]=event.data.split(':')[1];
+	totalTweets=event.data.split(':')[2];
+	testdata[mapping[emotion]]["y"] = event.data.split(':')[1];
+	print();
+	show();
+	// console.log("new data is here"+ event.data);
+
+	// document.getElementById("disp").innerHTML=totalTweets;
+	// document.getElementById("disp1").innerHTML=JSON.stringify(arr[0], null, 4)
+
+//////////////////////////////////
+
+//////////////////////////////////
+}
+//Width and height
+ print();
+
+    
+
+</script>
+</body>
+</html>

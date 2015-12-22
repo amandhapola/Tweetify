@@ -1,4 +1,3 @@
-import backtype.storm.spout.ISpout;
 import backtype.storm.spout.SpoutOutputCollector;
 import backtype.storm.task.TopologyContext;
 import backtype.storm.topology.OutputFieldsDeclarer;
@@ -51,16 +50,18 @@ class twitterSpout extends BaseRichSpout {
         };
         ConfigurationBuilder cb = new ConfigurationBuilder();
         cb.setDebugEnabled(true)
-                .setOAuthConsumerKey("8PkdXIhwYZMaSnAJv5OZvYkmM")
-                .setOAuthConsumerSecret("r5CUub3pBpHuQ4VwpJ2Ys5j022OpVtKbVpB3qfZ8EqVwu8YMG0")
-                .setOAuthAccessToken("2901834871-iINAPDY7YAW5vGBL6KROlvXQubJcX9TdxmOdEct")
-                .setOAuthAccessTokenSecret("56b3RR3PLJwKgmvW6QviaE3pt6sDGi5GSf1PkcZ7YNYYQ");
+                .setOAuthConsumerKey("dKUQo0IIf1ZYo3EtMNdbPT374")
+                .setOAuthConsumerSecret("lnRA8izXCEG6mRMePUV88k6XL3SzUs5fe3iOtKbArMFlaw3jio")
+                .setOAuthAccessToken("3565074266-MlYLLBx4aAov9d1tcyWCEh1A3bF68GXQOuMcj6g")
+                .setOAuthAccessTokenSecret("8ljRJRlRceMJUFqrGOc6Bbx3k11t9HYLXXWubsOKup0Ar");
         twitterStream=new TwitterStreamFactory(cb.build()).getInstance();
         twitterStream.addListener(listener);
         //adding filter
         FilterQuery filterQuery=new FilterQuery();
         String[] keywords={"india","narendra modi"};
+        double[][] loc = {{-180, -90}, {180, 90}};
         filterQuery.track(keywords);
+        filterQuery.locations(loc);
         twitterStream.filter(filterQuery);
 //        twitterStream.sample();
     }

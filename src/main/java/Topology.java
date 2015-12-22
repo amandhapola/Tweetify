@@ -1,13 +1,9 @@
 import backtype.storm.Config;
 import backtype.storm.LocalCluster;
-import backtype.storm.topology.IRichSpout;
 import backtype.storm.topology.TopologyBuilder;
-import synesketch.emotion.Emotion;
-import synesketch.emotion.EmotionalState;
-import synesketch.emotion.Empathyscope;
+import backtype.storm.tuple.Fields;
 
 import java.io.IOException;
-import java.util.HashMap;
 
 class Topology{
     static final String TOPOLOGY_NAME = "twitter_topology";
@@ -37,6 +33,7 @@ class Topology{
         b.setSpout("TwitterSpout", new twitterSpout());
         b.setBolt("preProcessBolt",new preProcessBolt(),5).shuffleGrouping("TwitterSpout");
         b.setBolt("getEmotionBolt",new getEmotionBolt(),5).shuffleGrouping("preProcessBolt");
+        b.setBolt("redisBolt", new redisBolt(),5).fieldsGrouping("getEmotionBolt", new Fields("emotionCLass"));
         final LocalCluster cluster = new LocalCluster();
         cluster.submitTopology(TOPOLOGY_NAME, config, b.createTopology());
         Runtime.getRuntime().addShutdownHook(new Thread() {

@@ -21,13 +21,13 @@ public class getEmotionBolt extends BaseRichBolt {
     private OutputCollector collector;
     private HashMap<Integer,String> map=new HashMap<Integer,String>();
     public void setMapValue(){
-        map.put(Emotion.ANGER,"Anger");
-        map.put(Emotion.DISGUST,"Disgust");
-        map.put(Emotion.FEAR,"Fear");
-        map.put(Emotion.HAPPINESS,"HAPPINESS");
-        map.put(Emotion.NEUTRAL,"Neutral");
+        map.put(Emotion.ANGER,"anger");
+        map.put(Emotion.DISGUST,"disgust");
+        map.put(Emotion.FEAR,"fear");
+        map.put(Emotion.HAPPINESS,"happy");
+        map.put(Emotion.NEUTRAL,"neutral");
         map.put(Emotion.SADNESS,"sad");
-        map.put(Emotion.SURPRISE,"Surprise");
+        map.put(Emotion.SURPRISE,"surprise");
     }
     @Override
     public void prepare(Map map, TopologyContext topologyContext, OutputCollector outputCollector) {
@@ -41,13 +41,13 @@ public class getEmotionBolt extends BaseRichBolt {
         String tweet=(String)tuple.getValueByField("res_tweet");
         Status original_tweet=(Status)tuple.getValueByField("tweet");
         try {
-            System.out.println(original_tweet.toString());
-            System.out.println(" ");
-            System.out.println("got tweet "+ tweet);
+//            System.out.println(original_tweet.toString());
+//            System.out.println(" ");
+//            System.out.println("got tweet "+ tweet);
             Emotion emotion=getEmotion(tweet);
-            System.out.println(emotion.toString());
-            System.out.println(" ");
-            System.out.println(((Integer) emotion.getType()));
+//            System.out.println(emotion.toString());
+//            System.out.println(" ");
+//            System.out.println(((Integer) emotion.getType()));
             String emotionClass=" ";
 
             if (map.containsKey((emotion.getType()))) {
@@ -58,8 +58,8 @@ public class getEmotionBolt extends BaseRichBolt {
                 System.out.println("key not found");
             }
 
-            System.out.println("emotion class :  "+ emotionClass);
-            System.out.println(" ");
+//            System.out.println("emotion class :  "+ emotionClass);
+//            System.out.println(" ");
             collector.emit(new Values(emotion,emotionClass,original_tweet));
         } catch (IOException e) {
             e.printStackTrace();
