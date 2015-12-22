@@ -50,10 +50,10 @@ class twitterSpout extends BaseRichSpout {
         };
         ConfigurationBuilder cb = new ConfigurationBuilder();
         cb.setDebugEnabled(true)
-                .setOAuthConsumerKey("dKUQo0IIf1ZYo3EtMNdbPT374")
-                .setOAuthConsumerSecret("lnRA8izXCEG6mRMePUV88k6XL3SzUs5fe3iOtKbArMFlaw3jio")
-                .setOAuthAccessToken("3565074266-MlYLLBx4aAov9d1tcyWCEh1A3bF68GXQOuMcj6g")
-                .setOAuthAccessTokenSecret("8ljRJRlRceMJUFqrGOc6Bbx3k11t9HYLXXWubsOKup0Ar");
+                .setOAuthConsumerKey("")
+                .setOAuthConsumerSecret("")
+                .setOAuthAccessToken("")
+                .setOAuthAccessTokenSecret("");
         twitterStream=new TwitterStreamFactory(cb.build()).getInstance();
         twitterStream.addListener(listener);
         //adding filter
